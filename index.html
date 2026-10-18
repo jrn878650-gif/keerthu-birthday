@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b20">
+
+<title>For Keerthu ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #ffb7d5;
+    --white: #fff8ff;
+    --muted: #d4cde8;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--white);
+    background:
+        radial-gradient(ellipse at 20% 20%, #282052 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 80%, #361b48 0%, transparent 45%),
+        linear-gradient(145deg, #07091b, #15132e 55%, #090b20);
+}
+
+#sky {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration, 3s) infinite ease-in-out;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: .2; transform: scale(.7); }
+    50% { opacity: 1; transform: scale(1.5); }
+}
+
+.moon {
+    position: fixed;
+    top: 8%;
+    right: 9%;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: #fff1d0;
+    box-shadow: 0 0 30px #ffe9c555, 0 0 90px #f9c6ff22;
+    opacity: .85;
+    z-index: 0;
+}
+
+.moon::after {
+    content: "";
+    position: absolute;
+    width: 62px;
+    height: 62px;
+    top: -8px;
+    left: -13px;
+    border-radius: 50%;
+    background: #15132e;
+}
+
+.glow {
+    position: fixed;
+    width: 230px;
+    height: 230px;
+    left: 50%;
+    top: 48%;
+    transform: translate(-50%, -50%);
+    background: #e55fa31b;
+    filter: blur(55px);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+main {
+    position: relative;
+    z-index: 2;
+    height: 100dvh;
+    width: 100%;
+}
+
+.screen {
+    display: none;
+    position: absolute;
+    inset: 0;
+    padding: 35px 24px 100px;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    animation: appear .8s ease both;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.content {
+    width: 100%;
+    max-width: 590px;
+    margin: auto;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font: 11px Arial, sans-serif;
+    color: var(--pink);
+    margin-bottom: 24px;
+}
+
+h1 {
+    font-size: clamp(38px, 9vw, 65px);
+    line-height: 1.12;
+    font-weight: normal;
+    margin-bottom: 23px;
+    text-shadow: 0 0 35px #ff9bc822;
+}
+
+h2 {
+    font-size: clamp(29px, 7vw, 43px);
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: 23px;
+}
+
+p {
+    color: var(--muted);
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.9;
+    margin: 0 auto 18px;
+}
+
+.accent {
+    color: var(--pink);
+    font-style: italic;
+}
+
+.heart {
+    font-size: 36px;
+    margin-bottom: 24px;
+    display: inline-block;
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.13); }
+    30% { transform: scale(1); }
+}
+
+.divider {
+    width: 65px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+    margin: 28px auto;
+}
+
+button {
+    font: 13px Arial, sans-serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border: 1px solid #ffc6df66;
+    color: white;
+    background: #ffffff0b;
+    padding: 15px 23px;
+    border-radius: 30px;
+    transition: .25s ease;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #ffb7d522;
+    border-color: var(--pink);
+    transform: translateY(-2px);
+}
+
+.controls {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px max(18px, env(safe-area-inset-bottom));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    background: linear-gradient(transparent, #090b20dd 30%);
+}
+
+.controls button {
+    margin: 0;
+    padding: 12px 18px;
+}
+
+#counter {
+    font: 11px Arial, sans-serif;
+    color: #c8bad8;
+    letter-spacing: 2px;
+    min-width: 50px;
+}
+
+.letter {
+    text-align: left;
+    border-left: 1px solid #ffb7d566;
+    padding-left: 20px;
+    margin: 28px auto;
+}
+
+.letter p {
+    font-size: 14px;
+}
+
+.signature {
+    color: var(--pink);
+    font-style: italic;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.final-line {
+    font-size: clamp(22px, 6vw, 34px);
+    line-height: 1.6;
+    color: #ffe2ef;
+    font-style: italic;
+}
+
+@media (max-height: 650px) {
+    .screen {
+        padding-top: 20px;
+        padding-bottom: 85px;
+    }
+
+    .eyebrow {
+        margin-bottom: 14px;
+    }
+
+    h1 {
+        margin-bottom: 15px;
+    }
+
+    p {
+        line-height: 1.7;
+        margin-bottom: 12px;
+    }
+
+    .divider {
+        margin: 18px auto;
+    }
+
+    .heart {
+        margin-bottom: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div id="sky" aria-hidden="true"></div>
+<div class="moon" aria-hidden="true"></div>
+<div class="glow" aria-hidden="true"></div>
+
+<main>
+
+    <!-- 1. OPENING -->
+    <section class="screen active">
+        <div class="content">
+            <div class="eyebrow">A little something for you</div>
+            <div class="heart">♡</div>
+            <h1>For you,<br><span class="accent">Keerthu.</span></h1>
+            <p>
+                Some words are difficult to say aloud.
+                So I put mine here, quietly, just for you.
+            </p>
+            <div class="divider"></div>
+            <p>Take your time. There's no rush.</p>
+            <button onclick="nextScreen()">Begin the journey →</button>
+        </div>
+    </section>
+
+    <!-- 2. BIRTHDAY -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">October 19 · Your special day</div>
+            <h1>Happy Birthday,<br><span class="accent">Keerthu!</span></h1>
+            <p>
+                Today is your day. A new year of life, new opportunities,
+                new beginnings, and countless little reasons to smile.
+            </p>
+            <p>
+                Wherever life finds you today, I hope this birthday
+                brings warmth to your heart.
+            </p>
+            <div class="divider"></div>
+            <p>Because you deserve good things. Truly.</p>
+            <button onclick="nextScreen()">A few words from my heart →</button>
+        </div>
+    </section>
+
+    <!-- 3. THE BOND -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">A chapter of our lives</div>
+            <h2>We were something <span class="accent">special.</span></h2>
+            <p>
+                We had our own way of being friends.
+                There were laughs, silly moments, arguments,
+                anger, silence, and days when we didn't know
+                how to talk to each other.
+            </p>
+            <p>
+                Not everything was perfect. Maybe we didn't always
+                understand each other the way we should have.
+                Maybe some things could have been handled differently.
+            </p>
+            <p>
+                But the friendship we shared was real to me.
+                And I'm not going to pretend it meant nothing.
+            </p>
+            <button onclick="nextScreen()">One thing I want you to know →</button>
+        </div>
+    </section>
+
+    <!-- 4. WHAT IT MEANT -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">A little honesty</div>
+            <h2>Some people leave a <span class="accent">mark.</span></h2>
+            <p>
+                You became a part of my life in a way that mattered.
+                Even if our paths look different now,
+                that part of my life will always be something
+                I can look back on with honesty.
+            </p>
+            <p>
+                I'm grateful for the time we had, for the things
+                I learned, and for the moments that made our
+                friendship what it was.
+            </p>
+            <div class="divider"></div>
+            <p>
+                A chapter doesn't have to last forever
+                to have meant something.
+            </p>
+            <button onclick="nextScreen()">And today is about you →</button>
+        </div>
+    </section>
+
+    <!-- 5. HER FUTURE -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">For the person you're becoming</div>
+            <h2>I hope life gives you <span class="accent">beautiful things.</span></h2>
+            <p>
+                I hope you achieve the dreams you're working towards.
+                I hope your hard work takes you places you've always
+                wanted to reach.
+            </p>
+            <p>
+                I hope your family stays close to your heart,
+                that your home is full of warmth, and that the little
+                things you love continue to make you happy.
+            </p>
+            <p>
+                I hope you meet people who understand you,
+                respect you, and remind you how wonderful life can be.
+            </p>
+            <button onclick="nextScreen()">There's one more thing →</button>
+        </div>
+    </section>
+
+    <!-- 6. THE LETTER -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">A letter, just for you</div>
+            <h2>From my heart, <span class="accent">to yours.</span></h2>
+
+            <div class="letter">
+                <p>Happy Birthday, Keerthu. ❤️</p>
+
+                <p>
+                    I don't really know what place I have in your life
+                    anymore, and I'm not writing this to ask for one.
+                </p>
+
+                <p>
+                    I just wanted to wish you properly, because you
+                    were once someone very special to me, and I didn't
+                    want this day to pass without wishing you from my heart.
+                </p>
+
+                <p>
+                    We may not talk like we used to. We may not be part
+                    of each other's everyday lives anymore. Maybe this
+                    is where our chapter ends.
+                </p>
+
+                <p>
+                    But I will never need to call our friendship
+                    meaningless just because it didn't last forever.
+                    For what it was, it mattered to me.
+                </p>
+
+                <p>
+                    You don't have to reply to this. You don't have
+                    to say anything. I simply wanted you to know
+                    that I wish you well.
+                </p>
+
+                <p>
+                    Thank you for being a part of my life when you were.
+                    Take care of yourself, keep chasing your dreams,
+                    and please be happy.
+                </p>
+
+                <div class="signature">With respect and good wishes. ♡</div>
+            </div>
+
+            <button onclick="nextScreen()">One last thought →</button>
+        </div>
+    </section>
+
+    <!-- 7. GOODBYE -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">No anger. No expectations.</div>
+            <h2>Sometimes, letting go is also a form of <span class="accent">care.</span></h2>
+            <p>
+                Not every person we care about will stay beside us
+                forever. Sometimes life takes people in different
+                directions, and sometimes the kindest thing is
+                to let things be.
+            </p>
+            <p>
+                I won't ask you to come back. I won't ask you to reply.
+                I just hope the future is kind to you.
+            </p>
+            <p>
+                Whatever comes next, I hope you find reasons to laugh,
+                courage when things get difficult, and peace when
+                the world feels too loud.
+            </p>
+            <button onclick="nextScreen()">Read my final wish →</button>
+        </div>
+    </section>
+
+    <!-- 8. FINAL WISH -->
+    <section class="screen">
+        <div class="content">
+            <div class="heart">♡</div>
+            <div class="eyebrow">For every tomorrow</div>
+            <h2>May your future be <span class="accent">beautiful.</span></h2>
+            <p>
+                May you grow into the person you want to become.
+                May your dreams become real, one step at a time.
+                May you always have people who genuinely care for you.
+            </p>
+            <p>
+                And on the days when life gets difficult,
+                I hope you remember how strong you are
+                and keep moving forward.
+            </p>
+            <div class="divider"></div>
+            <p class="final-line">
+                Happy Birthday, Keerthu.<br>
+                Keep smiling. Keep growing. Be happy.
+            </p>
+            <button onclick="nextScreen()">A final goodbye →</button>
+        </div>
+    </section>
+
+    <!-- 9. ENDING -->
+    <section class="screen">
+        <div class="content">
+            <div class="eyebrow">And now, I'll leave these words here</div>
+            <h1>Thank you,<br><span class="accent">Keerthu.</span></h1>
+            <p>
+                For being a part of my story.
+                For the chapter we shared.
+                For the things that, in their own way,
+                helped shape who I am.
+            </p>
+            <div class="divider"></div>
+            <p class="final-line">
+                Our paths may change,<br>
+                but I sincerely wish you well.
+            </p>
+            <p style="margin-top: 30px;">
+                Happy Birthday. ❤️
+            </p>
+            <p style="font-size: 12px; opacity: .7;">
+                Made with sincerity, just for you.
+            </p>
+            <button onclick="restartExperience()">Read it again ↺</button>
+        </div>
+    </section>
+
+</main>
+
+<div class="controls">
+    <button id="backButton" onclick="previousScreen()" hidden>← Back</button>
+    <span id="counter" aria-live="polite">01 / 09</span>
+    <button id="nextButton" onclick="nextScreen()">Next →</button>
+</div>
+
+<script>
+const screens = Array.from(document.querySelectorAll(".screen"));
+const counter = document.getElementById("counter");
+const backButton = document.getElementById("backButton");
+const nextButton = document.getElementById("nextButton");
+
+let currentScreen = 0;
+
+function showScreen(index) {
+    if (index < 0 || index >= screens.length) return;
+
+    currentScreen = index;
+
+    screens.forEach((screen, i) => {
+        screen.classList.toggle("active", i === currentScreen);
+        if (i === currentScreen) screen.scrollTop = 0;
+    });
+
+    counter.textContent =
+        String(currentScreen + 1).padStart(2, "0") +
+        " / " +
+        String(screens.length).padStart(2, "0");
+
+    backButton.hidden = currentScreen === 0;
+
+    nextButton.hidden = currentScreen === screens.length - 1;
+
+    window.scrollTo(0, 0);
+}
+
+function nextScreen() {
+    if (currentScreen < screens.length - 1) {
+        showScreen(currentScreen + 1);
+    }
+}
+
+function previousScreen() {
+    if (currentScreen > 0) {
+        showScreen(currentScreen - 1);
+    }
+}
+
+function restartExperience() {
+    showScreen(0);
+}
+
+/* Create stars using CSS and JavaScript only.
+   No photos, videos, music, or external media. */
+const sky = document.getElementById("sky");
+let seed = 271828;
+
+function random() {
+    seed = (seed * 16807) % 2147483647;
+    return (seed - 1) / 2147483646;
+}
+
+for (let i = 0; i < 100; i++) {
+    const star = document.createElement("span");
+    star.className = "star";
+
+    star.style.left = (random() * 100) + "%";
+    star.style.top = (random() * 100) + "%";
+    star.style.setProperty("--duration", (2 + random() * 4) + "s");
+    star.style.setProperty("--delay", (-random() * 5) + "s");
+
+    const size = 1 + random() * 2;
+    star.style.width = size + "px";
+    star.style.height = size + "px";
+
+    sky.appendChild(star);
+}
+
+/* Allow the arrow keys to navigate on keyboards. */
+document.addEventListener("keydown", function(event) {
+    if (event.key === "ArrowRight") nextScreen();
+    if (event.key === "ArrowLeft") previousScreen();
+});
+
+showScreen(0);
+</script>
+
+</body>
+  </html>
